@@ -24,7 +24,7 @@
 	\end{enumerate}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HC}{Lemma 00HC}]{stacks-project}
 	\label{lemma-composition-flat}
 	A composition of (faithfully) flat ring maps is
 	(faithfully) flat.
@@ -60,7 +60,7 @@
 	flat as an $R$-module.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HI}{Lemma 00HI}]{stacks-project}
 	\label{lemma-flat-base-change}
 	Suppose that $M$ is faithfully flat over $R$, and that $R \to R'$
 	is a ring map. Then $M \otimes_R R'$ is faithfully flat over $R'$.
@@ -74,7 +74,7 @@
 	the corresponding exactness properties of the functor $-\otimes_R M$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HJ}{Lemma 00HJ}]{stacks-project}
 	\label{lemma-flatness-descends}
 	Let $R \to R'$ be a faithfully flat ring map.
 	Let $M$ be a module over $R$, and set $M' = R' \otimes_R M$.
@@ -101,7 +101,7 @@
 	is exact.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/0584}{Lemma 0584}]{stacks-project}
 	\label{lemma-flatness-descends-more-general}
 	Let $R$ be a ring. Let $S \to S'$ be a flat map of $R$-algebras.
 	Let $M$ be a module over $S$, and set $M' = S' \otimes_S M$.
@@ -129,7 +129,7 @@
 	shows that $M$ is flat over $R$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/039V}{Lemma 039V}]{stacks-project}
 	\label{lemma-flat-permanence}
 	Let $R \to S$ be a ring map. Let $M$ be an $S$-module.
 	If $M$ is flat as an $R$-module and faithfully flat as an $S$-module,
@@ -152,7 +152,7 @@
 	Hence $R \to S$ is flat.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HO}{Lemma 00HO}]{stacks-project}
 	\label{lemma-easy-ff}
 	Let $R$ be a ring.
 	Let $M$ be an $R$-module.
@@ -179,7 +179,7 @@
 	zero. Hence $x $ is in the image of $N_1 \to N_2$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HP}{Lemma 00HP}]{stacks-project}
 	\label{lemma-ff}
 	\begin{slogan}
 		A flat module is faithfully flat if and only if it has nonzero fibers.
@@ -217,6 +217,70 @@
 	If $I \not =  R$ we may choose
 	a maximal ideal $I \subset \mathfrak m \subset R$.
 	This immediately gives a contradiction.
+\end{proof}
+
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HQ}{Lemma 00HQ}]{stacks-project}
+	\label{lemma-ff-rings}
+	Let $R \to S$ be a flat ring map.
+	The following are equivalent:
+	\begin{enumerate}
+		\item $R \to S$ is faithfully flat,
+		\item the induced map on $\Spec$ is surjective, and
+		\item any closed point $x \in \Spec(R)$ is
+		in the image of the map $\Spec(S) \to \Spec(R)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	This follows quickly from Lemma \ref{lemma-ff}, because we
+	saw in Remark 18.5
+	that $\mathfrak p$ is in the image
+	if and only if the ring $S \otimes_R \kappa(\mathfrak p)$
+	is nonzero.
+\end{proof}
+
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HR}{Lemma 00HR}]{stacks-project}
+	\label{lemma-local-flat-ff}
+	A flat local ring homomorphism of local rings is faithfully flat.
+\end{lemma}
+
+\begin{proof}
+	Immediate from Lemma \ref{lemma-ff-rings}.
+\end{proof}
+
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/00HS}{Lemma 00HS}]{stacks-project}
+	\label{lemma-flat-going-down}
+	Let $R \to S$ be flat. Let $\mathfrak p \subset \mathfrak p'$
+	be primes of $R$. Let $\mathfrak q' \subset S$ be a prime of $S$
+	mapping to $\mathfrak p'$. Then there exists a prime
+	$\mathfrak q \subset \mathfrak q'$ mapping to $\mathfrak p$.
+\end{lemma}
+
+\begin{proof}
+	By Lemma 39.18 the local ring map
+	$R_{\mathfrak p'} \to S_{\mathfrak q'}$ is flat.
+	By Lemma \ref{lemma-local-flat-ff} this local ring map is faithfully
+	flat. By Lemma \ref{lemma-ff-rings} there is a prime mapping to
+	$\mathfrak p R_{\mathfrak p'}$. The inverse image of this
+	prime in $S$ does the job.
+\end{proof}
+
+\begin{lemma}\cite[\href{https://stacks.math.columbia.edu/tag/090N}{Lemma 090N}]{stacks-project}
+	\label{lemma-colimit-faithfully-flat}
+	Let $R$ be a ring. Let $\{S_i, \varphi_{ii'}\}$ be a directed system of
+	faithfully flat $R$-algebras. Then $S = \colim_i S_i$ is a faithfully flat
+	$R$-algebra.
+\end{lemma}
+
+\begin{proof}
+	By Lemma 39.3 we see that $S$ is flat.
+	Let $\mathfrak m \subset R$ be a maximal ideal. By
+	Lemma \ref{lemma-ff-rings}
+	none of the rings $S_i/\mathfrak m S_i$ is zero.
+	Hence $S/\mathfrak mS = \colim S_i/\mathfrak mS_i$ is nonzero
+	as well because $1$ is not equal to zero. Thus the image of
+	$\Spec(S) \to \Spec(R)$ contains $\mathfrak m$ and we see that $R \to S$
+	is faithfully flat by Lemma \ref{lemma-ff-rings}.
 \end{proof}
 
 \bibliographystyle{plain}
