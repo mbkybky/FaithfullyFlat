@@ -1,0 +1,223 @@
+% In this file you should put the actual content of the blueprint.
+% It will be used both by the web and the print version.
+% It should *not* include the \begin{document}
+%
+% If you want to split the blueprint content into several files then
+% the current file can be a simple sequence of \input. Otherwise It
+% can start with a \section or \chapter for instance.
+
+\chapter{Faithfully Flat Modules}
+
+\begin{definition}\cite[\href{https://stacks.math.columbia.edu/tag/00HB}{Definition 00HB}]{stacks-project}
+	\label{definition-flat}
+	Let $R$ be a ring.
+	\begin{enumerate}
+		
+		\item An $R$-module $M$ is called {\it faithfully flat} if the
+		complex of $R$-modules
+		$N_1 \to N_2 \to N_3$ is exact if and only if
+		the sequence $M \otimes_R N_1 \to M \otimes_R N_2 \to M \otimes_R N_3$
+		is exact.
+		
+		\item A ring map $R \to S$ is called {\it faithfully flat} if
+		$S$ is faithfully flat as an $R$-module.
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	\label{lemma-composition-flat}
+	A composition of (faithfully) flat ring maps is
+	(faithfully) flat.
+	If $R \to R'$ is (faithfully) flat, and $M'$ is a
+	(faithfully) flat $R'$-module, then $M'$ is a
+	(faithfully) flat $R$-module.
+\end{lemma}
+
+\begin{proof}
+	The first statement of the lemma is a particular case of the
+	second, so it is clearly enough to prove the latter. Let
+	$R \to R'$ be a flat ring map, and $M'$ a flat $R'$-module.
+	We need to prove that $M'$ is a flat $R$-module. Let
+	$N_1 \to N_2 \to N_3$ be an exact complex of $R$-modules.
+	Then, the complex $R' \otimes_R N_1 \to
+	R' \otimes_R N_2 \to R' \otimes_R N_3$ is exact (since $R'$
+	is flat as an $R$-module), and so the complex
+	$M' \otimes_{R'} \left(R' \otimes_R N_1\right)
+	\to M' \otimes_{R'} \left(R' \otimes_R N_2\right)
+	\to M' \otimes_{R'} \left(R' \otimes_R N_3\right)$ is
+	exact (since $M'$ is a flat $R'$-module). Since
+	$M' \otimes_{R'} \left(R' \otimes_R N\right)
+	\cong \left(M' \otimes_{R'} R'\right) \otimes_R N
+	\cong M' \otimes_R N$ for any $R$-module $N$ functorially
+	(by Lemmas 12.7 and
+	12.3), this complex is isomorphic
+	to the complex
+	$M' \otimes_R N_1 \to M' \otimes_R N_2 \to M' \otimes_R N_3$,
+	which is therefore also exact. This shows that $M'$ is a flat
+	$R$-module. Tracing this argument backwards, we can show
+	that if $R \to R'$ is faithfully flat, and if $M'$ is
+	faithfully flat as an $R'$-module, then $M'$ is faithfully
+	flat as an $R$-module.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-flat-base-change}
+	Suppose that $M$ is faithfully flat over $R$, and that $R \to R'$
+	is a ring map. Then $M \otimes_R R'$ is faithfully flat over $R'$.
+\end{lemma}
+
+\begin{proof}
+	For any $R'$-module $N$ we have a canonical
+	isomorphism $N \otimes_{R'} (R'\otimes_R M)
+	= N \otimes_R M$. Hence the desired exactness properties of the functor
+	$-\otimes_{R'}(R'\otimes_R M)$ follow from
+	the corresponding exactness properties of the functor $-\otimes_R M$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-flatness-descends}
+	Let $R \to R'$ be a faithfully flat ring map.
+	Let $M$ be a module over $R$, and set $M' = R' \otimes_R M$.
+	Then $M$ is flat over $R$ if and only if $M'$ is flat over $R'$.
+\end{lemma}
+
+\begin{proof}
+	By Lemma \ref{lemma-flat-base-change} we see that if $M$ is flat
+	then $M'$ is flat. For the converse, suppose that $M'$ is flat.
+	Let $N_1 \to N_2 \to N_3$ be an exact sequence of $R$-modules.
+	We want to show that $N_1 \otimes_R M \to N_2 \otimes_R M \to N_3 \otimes_R M$
+	is exact. We know that
+	$N_1 \otimes_R R' \to N_2 \otimes_R R' \to N_3 \otimes_R R'$ is
+	exact, because $R \to R'$ is flat. Flatness of $M'$ implies that
+	$N_1 \otimes_R R' \otimes_{R'} M'
+	\to N_2 \otimes_R R' \otimes_{R'} M'
+	\to N_3 \otimes_R R' \otimes_{R'} M'$ is exact.
+	We may write this as
+	$N_1 \otimes_R M \otimes_R R'
+	\to N_2 \otimes_R M \otimes_R R'
+	\to N_3 \otimes_R M \otimes_R R'$.
+	Finally, faithful flatness implies that
+	$N_1 \otimes_R M \to N_2 \otimes_R M \to N_3 \otimes_R M$
+	is exact.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-flatness-descends-more-general}
+	Let $R$ be a ring. Let $S \to S'$ be a flat map of $R$-algebras.
+	Let $M$ be a module over $S$, and set $M' = S' \otimes_S M$.
+	\begin{enumerate}
+		\item If $M$ is flat over $R$, then $M'$ is flat over $R$.
+		\item If $S \to S'$ is faithfully flat, then $M$ is flat
+		over $R$ if and only if $M'$ is flat over $R$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Let $N \to N'$ be an injection of $R$-modules. By the flatness
+	of $S \to S'$ we have
+	$$
+	\Ker(N \otimes_R M \to N' \otimes_R M) \otimes_S S'
+	=
+	\Ker(N \otimes_R M' \to N' \otimes_R M')
+	$$
+	If $M$ is flat over $R$, then the left hand side is zero and
+	we find that $M'$ is flat over $R$ by the second characterization
+	of flatness in Lemma 39.5.
+	If $M'$ is flat over $R$ then we have the vanishing of the right hand side
+	and if in addition $S \to S'$ is faithfully flat, this implies that
+	$\Ker(N \otimes_R M \to N' \otimes_R M)$ is zero which in turn
+	shows that $M$ is flat over $R$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-flat-permanence}
+	Let $R \to S$ be a ring map. Let $M$ be an $S$-module.
+	If $M$ is flat as an $R$-module and faithfully flat as an $S$-module,
+	then $R \to S$ is flat.
+\end{lemma}
+
+\begin{proof}
+	Let $N_1 \to N_2 \to N_3$ be an exact sequence of $R$-modules.
+	By assumption $N_1 \otimes_R M \to N_2 \otimes_R M \to N_3 \otimes_R M$
+	is exact. We may write this as
+	$$
+	N_1 \otimes_R S \otimes_S M
+	\to
+	N_2 \otimes_R S \otimes_S M
+	\to
+	N_3 \otimes_R S \otimes_S M.
+	$$
+	By faithful flatness of $M$ over $S$ we conclude that
+	$N_1 \otimes_R S \to N_2 \otimes_R S \to N_3 \otimes_R S$ is exact.
+	Hence $R \to S$ is flat.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-easy-ff}
+	Let $R$ be a ring.
+	Let $M$ be an $R$-module.
+	The following are equivalent
+	\begin{enumerate}
+		\item $M$ is faithfully flat, and
+		\item $M$ is flat and for all $R$-module homomorphisms $\alpha : N \to N'$
+		we have $\alpha = 0$ if and only if $\alpha \otimes \text{id}_M = 0$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	If $M$ is faithfully flat, then
+	$0 \to \Ker(\alpha) \to N \to N'$ is exact if and only if the same holds
+	after tensoring with $M$. This proves (1) implies (2).
+	For the other, assume (2). Let $N_1 \to N_2 \to N_3$
+	be a complex, and assume the complex
+	$N_1 \otimes_R M \to N_2 \otimes_R M \to N_3\otimes_R M$
+	is exact. Take $x \in \Ker(N_2 \to N_3)$,
+	and consider the map $\alpha : R \to N_2/\Im(N_1)$,
+	$r \mapsto rx + \Im(N_1)$. By the exactness
+	of the complex $-\otimes_R M$ we see that $\alpha \otimes
+	\text{id}_M$ is zero. By assumption we get that $\alpha$ is
+	zero. Hence $x $ is in the image of $N_1 \to N_2$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-ff}
+	\begin{slogan}
+		A flat module is faithfully flat if and only if it has nonzero fibers.
+	\end{slogan}
+	Let $M$ be a flat $R$-module.
+	The following are equivalent:
+	\begin{enumerate}
+		\item $M$ is faithfully flat,
+		\item for every nonzero $R$-module $N$, then tensor product $M \otimes_R N$
+		is nonzero,
+		\item for all $\mathfrak p \in \Spec(R)$
+		the tensor product $M \otimes_R \kappa(\mathfrak p)$ is nonzero, and
+		\item for all maximal ideals $\mathfrak m$ of $R$
+		the tensor product $M \otimes_R \kappa(\mathfrak m) = M/{\mathfrak m}M$
+		is nonzero.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Assume $M$ faithfully flat and $N \not = 0$. By Lemma \ref{lemma-easy-ff}
+	the nonzero map $1 : N \to N$ induces a nonzero map
+	$M \otimes_R N \to M \otimes_R N$, so $M \otimes_R N \not = 0$.
+	Thus (1) implies (2). The implications (2) $\Rightarrow$ (3) $\Rightarrow$ (4)
+	are immediate.
+	
+	\medskip\noindent
+	Assume (4). Suppose that $N_1 \to N_2 \to N_3$ is a complex and
+	suppose that $N_1 \otimes_R M \to N_2\otimes_R M \to
+	N_3\otimes_R M$ is exact. Let $H$ be the cohomology of the complex,
+	so $H = \Ker(N_2 \to N_3)/\Im(N_1 \to N_2)$. To finish the proof
+	we will show $H = 0$. By flatness we see that $H \otimes_R M = 0$.
+	Take $x \in H$ and let $I = \{f \in R \mid fx = 0 \}$
+	be its annihilator. Since $R/I \subset H$ we get
+	$M/IM \subset H \otimes_R M = 0$ by flatness of $M$.
+	If $I \not =  R$ we may choose
+	a maximal ideal $I \subset \mathfrak m \subset R$.
+	This immediately gives a contradiction.
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{ref}
