@@ -2,7 +2,7 @@ name: Build docs
 on:
   push:
     branches:
-      - Test
+      - "Test"
 jobs:
   build:
     permissions:
