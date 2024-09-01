@@ -1,1 +1,4 @@
-def hello := "world"
+import Mathlib.Tactic
+
+/-- **Test** -/
+def Foo : ℕ := sorry
